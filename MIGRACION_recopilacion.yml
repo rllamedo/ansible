@@ -4,11 +4,11 @@
   tasks:
     - name: "Create custom fact directory"
       file:
-        path: "/root/facts.d"
+        path: "{{ ansible_user_dir }}/facts.d"
         state: directory
     - name: "Insert custom fact file"
       copy:
         src: "{{ item }}"
-        dest: "/root/facts.d/"
+        dest: "{{ ansible_user_dir }}/facts.d/"
         mode: 0755
       with_fileglob: "/etc/ansible/facts/*.fact" 
